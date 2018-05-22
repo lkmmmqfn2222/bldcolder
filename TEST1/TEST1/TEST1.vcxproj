@@ -76,12 +76,10 @@
   </ImportGroup>
   <ItemGroup />
   <ItemGroup>
-    <ClCompile Include="delay.c" />
     <ClCompile Include="bsp.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="myprintf.c" />
     <ClCompile Include="system_stm32f0xx.c" />
-    <ClInclude Include="delay.h" />
     <ClInclude Include="bsp.h" />
     <ClInclude Include="include_config.h" />
     <ClInclude Include="myprintf.h" />

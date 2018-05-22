@@ -252,9 +252,6 @@
     <ClCompile Include="main.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="delay.c">
-      <Filter>Source files\app</Filter>
-    </ClCompile>
     <ClCompile Include="myprintf.c">
       <Filter>Source files\app</Filter>
     </ClCompile>
@@ -263,9 +260,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="delay.h">
-      <Filter>Source files\app</Filter>
-    </ClInclude>
     <ClInclude Include="myprintf.h">
       <Filter>Source files\app</Filter>
     </ClInclude>

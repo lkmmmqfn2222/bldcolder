@@ -13,6 +13,9 @@
 #include "stm32f0xx_adc.h"
 #include "stdio.h"
 #include "stdarg.h"
+#include "stm32f0xx_exti.h"
+#include "stm32f0xx_syscfg.h"
+#include "stm32f0xx_iwdg.h"
 
 typedef uint8_t u8;
 typedef uint16_t u16;
