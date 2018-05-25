@@ -41,4 +41,8 @@ Debug/bsp.o: bsp.c bsp.h include_config.h \
  c:\sysgcc\arm-eabi\arm-eabi\sys-include\sys\_timespec.h \
  c:\sysgcc\arm-eabi\arm-eabi\sys-include\sys\_pthreadtypes.h \
  c:\sysgcc\arm-eabi\arm-eabi\sys-include\machine\types.h \
- c:\sysgcc\arm-eabi\arm-eabi\sys-include\sys\stdio.h
+ c:\sysgcc\arm-eabi\arm-eabi\sys-include\sys\stdio.h \
+ C:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_exti.h \
+ C:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_syscfg.h \
+ C:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_iwdg.h \
+ bldc.h

@@ -258,6 +258,9 @@
     <ClCompile Include="bsp.c">
       <Filter>Source files\bsp</Filter>
     </ClCompile>
+    <ClCompile Include="bldc.c">
+      <Filter>Source files\app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myprintf.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="bsp.h">
       <Filter>Source files\bsp</Filter>
+    </ClInclude>
+    <ClInclude Include="bldc.h">
+      <Filter>Source files\app</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

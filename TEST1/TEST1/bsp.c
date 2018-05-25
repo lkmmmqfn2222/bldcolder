@@ -1,4 +1,5 @@
 #include "bsp.h"
+#include "bldc.h"
 
 uint8_t receive_dma[CIRCUL_BUF_LEN];
 uint16_t adc_dma[ADC_CHANNEL_SIZE];
@@ -139,7 +140,7 @@ void bldc_drv_init(void)
 	TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_High;
 	TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
 	TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Set;
-	TIM_OC3Init(TIM1, &TIM_OCInitStructure);
+	TIM_OC1Init(TIM1, &TIM_OCInitStructure);
 	TIM_OC2Init(TIM1, &TIM_OCInitStructure);
 	TIM_OC3Init(TIM1, &TIM_OCInitStructure);
 	
@@ -301,5 +302,72 @@ void TIM16_IRQHandler(void)
 	{
 		TIM_ClearITPendingBit(TIM16, TIM_IT_Update);
 		_us_timex10 += 65535;
+	}
+}
+
+/****************************************
+ *
+ *this function will be excuted once 
+ *get a hallgpio interrupt
+ *and get the count time to calculate
+ *the velocity of motor
+ **/
+
+extern motor_t *motor;
+
+void hall_interrupt(void)
+{
+	static u8 HallValue;
+	static u32 HallTime;
+	u16 HallNow = GPIO_ReadOutputData(GPIOB);
+	u8 x = ((HallNow >> 4) & 0x01)+((HallNow>>4)&0x02)+((HallNow<<2)&0x03);
+	u32 t = us_timex10();
+	if (HallValue!=x)
+	{
+		HallValue = x; 
+		bldc_hall_trigger(motor, HallNow, t - HallTime);
+		HallTime = t;
+	}
+}
+
+
+void phase_enable(char a,char b,char c)
+{
+	if (c)
+		GPIO_SetBits(GPIOB, GPIO_Pin_13);
+	else
+		GPIO_ResetBits(GPIOB, GPIO_Pin_13);
+
+	if (b)
+		GPIO_SetBits(GPIOB, GPIO_Pin_14);
+	else
+		GPIO_ResetBits(GPIOB, GPIO_Pin_14);
+
+	if (a)
+		GPIO_SetBits(GPIOA, GPIO_Pin_15);
+	else
+		GPIO_ResetBits(GPIOA, GPIO_Pin_15);
+}
+
+
+void EXTI0_1_IRQHandler()
+{
+	hall_interrupt();
+	EXTI_ClearFlag(EXTI_Line0 );
+	EXTI_ClearITPendingBit(EXTI_Line2 | EXTI_Line3);
+}
+void EXTI4_15_IRQHandler()
+{
+	hall_interrupt();
+	EXTI_ClearFlag(EXTI_Line4 | EXTI_Line5);
+	EXTI_ClearITPendingBit(EXTI_Line4 | EXTI_Line5);
+}
+
+
+void HardFault_Handler(void)
+{
+	/* Go to infinite loop when Hard Fault exception occurs */
+	while (1)
+	{
 	}
 }
