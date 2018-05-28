@@ -43,7 +43,7 @@ void bldc_default_para(motor_t *self)
 
 void pid_init(pid_contorller_t * self)
 {
-	//self->err = 0;
+	self->err = 0;
 	self->d_err = 0;
 	self->ui = 0;
 	self->ud = 0;

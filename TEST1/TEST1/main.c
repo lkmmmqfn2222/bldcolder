@@ -3,7 +3,7 @@
 #include "bsp.h"
 #include "bldc.h"
 
-motor_t *motor;
+motor_t motor;
 
 int main()
 {
@@ -12,8 +12,9 @@ int main()
 	hall_config();
 	tim16_init();
 	
-	bldc_init(motor);
-	bldc_enable(motor);
+
+	bldc_init(&motor);
+	bldc_enable(&motor);
 
 
 	

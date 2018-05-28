@@ -1,14 +1,16 @@
-﻿生成启动时间为 2018/5/25 20:39:02。
+﻿生成启动时间为 2018/5/28 20:40:15。
      1>项目“D:\VSPrj\R1BLDCTEST\TEST1\TEST1\TEST1.vcxproj”在节点 2 上(Build 个目标)。
      1>Build:
          "C:\Program Files (x86)\Sysprogs\VisualGDB\VisualGDB.exe" /build "D:\VSPrj\R1BLDCTEST\TEST1\TEST1\TEST1.vcxproj" "/solution:D:\VSPrj\R1BLDCTEST\TEST1\TEST1.sln"  "/config:Debug" "/platform:Win32"
          VisualGDB: Run "C:\SysGCC\arm-eabi\bin\make.exe  CONFIG=Debug -j8" in directory "D:\VSPrj\R1BLDCTEST\TEST1\TEST1" on local computer
-         make: Nothing to be done for `all'.
+         C:/SysGCC/arm-eabi/bin/arm-eabi-gcc.exe -ggdb -ffunction-sections -O0   -mcpu=cortex-m0 -mthumb -I. -IC:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/STM32F0xx_StdPeriph_Driver/inc -IC:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/Device/ST/STM32F0xx/Include -IC:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/Include -IC:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/RTOS -DDEBUG=1 -DARM_MATH_CM0 -DSTM32F030C8 -Dflash_layout -DSTM32F030  -c bsp.c -o Debug/bsp.o -MD -MF Debug/bsp.dep
+         C:/SysGCC/arm-eabi/bin/arm-eabi-g++.exe -o Debug/TEST1.elf -Wl,-gc-sections --specs=nano.specs --specs=nosys.specs -TC:\Users\Cairne\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/LinkerScripts/STM32F030C8_flash.lds  -mcpu=cortex-m0 -mthumb   -Wl,--start-group Debug/bldc.o Debug/bsp.o Debug/main.o Debug/myprintf.o Debug/system_stm32f0xx.o Debug/startup_stm32f030x8.o Debug/stm32f0xx_adc.o Debug/stm32f0xx_can.o Debug/stm32f0xx_cec.o Debug/stm32f0xx_comp.o Debug/stm32f0xx_crc.o Debug/stm32f0xx_crs.o Debug/stm32f0xx_dac.o Debug/stm32f0xx_dbgmcu.o Debug/stm32f0xx_dma.o Debug/stm32f0xx_exti.o Debug/stm32f0xx_flash.o Debug/stm32f0xx_gpio.o Debug/stm32f0xx_i2c.o Debug/stm32f0xx_iwdg.o Debug/stm32f0xx_misc.o Debug/stm32f0xx_pwr.o Debug/stm32f0xx_rcc.o Debug/stm32f0xx_rtc.o Debug/stm32f0xx_spi.o Debug/stm32f0xx_syscfg.o Debug/stm32f0xx_tim.o Debug/stm32f0xx_usart.o Debug/stm32f0xx_wwdg.o     -Wl,--end-group
+         C:/SysGCC/arm-eabi/bin/arm-eabi-objcopy.exe -O binary Debug/TEST1.elf Debug/TEST1.bin
          ------------------- Memory utilization report -------------------
-         Used FLASH: 15KB out of 64KB (24%)
-         Used RAM: 700 bytes out of 8192 bytes (8%)
+         Used FLASH: 15KB out of 64KB (24%) [+20]
+         Used RAM: 860 bytes out of 8192 bytes (10%)
      1>已完成生成项目“D:\VSPrj\R1BLDCTEST\TEST1\TEST1\TEST1.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.57
+已用时间 00:00:05.36

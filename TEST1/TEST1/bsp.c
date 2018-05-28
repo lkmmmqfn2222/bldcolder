@@ -173,8 +173,8 @@ void hall_config(void)
 	 *@
 	 **/
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//external nvic
-	
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+	
 	GPIO_InitTypeDef GPIO_InitStruct;
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_4 | GPIO_Pin_0;
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
@@ -195,7 +195,7 @@ void hall_config(void)
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource5);
 	
 	NVIC_InitTypeDef NVIC_InitStruct;
-	NVIC_InitStruct.NVIC_IRQChannel = EXTI2_3_IRQn;
+	NVIC_InitStruct.NVIC_IRQChannel = EXTI0_1_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelPriority = 0x00;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
@@ -313,19 +313,19 @@ void TIM16_IRQHandler(void)
  *the velocity of motor
  **/
 
-extern motor_t *motor;
+extern motor_t motor;
 
 void hall_interrupt(void)
 {
 	static u8 HallValue;
 	static u32 HallTime;
-	u16 HallNow = GPIO_ReadOutputData(GPIOB);
-	u8 x = ((HallNow >> 4) & 0x01)+((HallNow>>4)&0x02)+((HallNow<<2)&0x03);
+	u16 HallNow = GPIO_ReadInputData(GPIOB);
+	u8 x = ((HallNow >> 2) &0b0100)+((HallNow>>4)& 0b0010)+((HallNow)&0b0001);
 	u32 t = us_timex10();
 	if (HallValue!=x)
 	{
 		HallValue = x; 
-		bldc_hall_trigger(motor, HallNow, t - HallTime);
+		bldc_hall_trigger(&motor, HallValue, t - HallTime);
 		HallTime = t;
 	}
 }
